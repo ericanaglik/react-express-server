@@ -32,5 +32,12 @@ app.get('/random', (req, res) => {
   res.json({ value })
 })
 
+// /random?n=3&s=6
+app.get('/randomrolls', (req, res) => {
+  const { n, s } = req.query
+  const rolls = randomRolls(n, s)
+  res.json({ rolls }) // { "rolls": [1,2,3] }
+})
+
 const port = 4000
 app.listen(port, () => console.log(`LISTENING ON PORT ${port}`))
